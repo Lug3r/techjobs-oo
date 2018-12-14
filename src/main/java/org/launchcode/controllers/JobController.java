@@ -49,15 +49,16 @@ public class JobController {
             return "new-job";
         }
 
+        Job newJob = new Job();
 
-        String jobName = jobForm.getName();
-        Employer jobEmp = jobData.getEmployers().findById(jobForm.getEmployerId());
-        Location jobLoc = jobData.getLocations().findById(jobForm.getLocationId());
-        PositionType jobPos = jobData.getPositionTypes().findById(jobForm.getPositionTypeId());
-        CoreCompetency jobComp = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetenciesId());
+        newJob.setName(jobForm.getName());
+        newJob.setEmployer(jobData.getEmployers().findById(jobForm.getEmployerId()));
+        newJob.setLocation(jobData.getLocations().findById(jobForm.getLocationId()));
+        newJob.setPositionType(jobData.getPositionTypes().findById(jobForm.getPositionTypeId()));
+        newJob.setCoreCompetency(jobData.getCoreCompetencies().findById(jobForm.getCoreCompetenciesId()));
 
 
-        Job newJob = new Job(jobName, jobEmp, jobLoc, jobPos, jobComp);
+
 
 
         jobData.add(newJob);
